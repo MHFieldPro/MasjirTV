@@ -4,9 +4,10 @@ import { PrayerSchedule } from '../types';
 
 interface PrayerTimesSlideProps {
   data: PrayerSchedule;
+  showSilenceMessage?: boolean;
 }
 
-const PrayerTimesSlide: React.FC<PrayerTimesSlideProps> = ({ data }) => {
+const PrayerTimesSlide: React.FC<PrayerTimesSlideProps> = ({ data, showSilenceMessage }) => {
   const prayerRows = [
     { name: 'Fajr', time: data.fajr, icon: '🌅' },
     { name: 'Sunrise', time: data.sunrise, icon: '☀️' },
@@ -28,6 +29,7 @@ const PrayerTimesSlide: React.FC<PrayerTimesSlideProps> = ({ data }) => {
         <div className="h-1 w-32 bg-emerald-500 mx-auto rounded-full" />
       </header>
 
+
       <div className="grid grid-cols-2 gap-6 w-full max-w-6xl relative z-10">
         {prayerRows.map((prayer) => (
           <div 
@@ -44,6 +46,13 @@ const PrayerTimesSlide: React.FC<PrayerTimesSlideProps> = ({ data }) => {
           </div>
         ))}
       </div>
+
+      {showSilenceMessage && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-black/80">
+          <img src="https://ministrypass-prod.s3.amazonaws.com/uploads/2019/04/Please-Silence-Your-Mobile-Device-Minimalist_Title-Slide-1.jpg" alt="Please Silence Your Mobile Device" className="max-w-xl w-full rounded-2xl shadow-2xl mb-8" />
+          <h2 className="text-white text-4xl font-bold tracking-wider bg-emerald-600/80 px-8 py-4 rounded-2xl shadow-lg">Please silence your phone</h2>
+        </div>
+      )}
 
       <footer className="mt-12 text-white/30 text-xl font-medium tracking-widest uppercase">
         Live Schedule from CICSW.CA • {new Date().toLocaleDateString(undefined, { dateStyle: 'full' })}

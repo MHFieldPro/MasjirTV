@@ -1,6 +1,17 @@
 
 import { MediaType, SlideItem, NewsItem } from '../types';
 
+// Static fallback prayer times (Calgary example)
+export const CALGARY_PRAYER_SCHEDULE = {
+  fajr: '6:30',
+  sunrise: '7:30',
+  dhuhr: '2:30',
+  asr: '4:10',
+  maghrib: '7:34',
+  isha: '8:40',
+  date: '2026-01-24'
+};
+
 export const GALLERY_IMAGES: SlideItem[] = [
   {
     id: 'g1',
@@ -11,6 +22,15 @@ export const GALLERY_IMAGES: SlideItem[] = [
     description: 'Recent highlights from our library.',
     source: 'Cloud Assets'
   },
+    {
+      id: 'g4',
+      type: MediaType.IMAGE,
+      url: 'https://ministrypass-prod.s3.amazonaws.com/uploads/2019/04/Please-Silence-Your-Mobile-Device-Minimalist_Title-Slide-1.jpg',
+      duration: 8000,
+      title: 'Please Silence Your Mobile Device',
+      description: 'Reminder for attendees.',
+      source: 'Ministry Pass'
+    },
   {
     id: 'g2',
     type: MediaType.IMAGE,
@@ -23,7 +43,7 @@ export const GALLERY_IMAGES: SlideItem[] = [
   {
     id: 'g3',
     type: MediaType.IMAGE,
-    url: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&q=80&w=1920&h=1080',
+    url: 'https://tse4.mm.bing.net/th/id/OIP.0raxKyzINQZvN3b_Z-YksQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
     duration: 8000,
     title: 'Modern Architecture',
     description: 'Our new facility extension.',

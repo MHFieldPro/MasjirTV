@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import SlideCarousel from './components/SlideCarousel';
 import NewsTicker from './components/NewsTicker';
-import { GALLERY_IMAGES, MOCK_NEWS } from './services/mockData';
+import { GALLERY_IMAGES, MOCK_NEWS, CALGARY_PRAYER_SCHEDULE } from './services/mockData';
 import { fetchCICSWPrayerData, formatPrayerTicker } from './services/prayerService';
 import { NewsItem, PrayerSchedule, MediaType, SlideItem } from './types';
 
@@ -15,16 +15,16 @@ const App: React.FC = () => {
     const items: SlideItem[] = [];
     
     // Insert prayer table as the first slide if data is available
-    if (prayerData) {
-      items.push({
-        id: 'prayer-slide',
-        type: MediaType.PRAYER_TABLE,
-        url: 'custom://prayer-table',
-        duration: 15000, // Show for 15 seconds
-        source: 'CICSW Live',
-        data: prayerData
-      });
-    }
+
+    // Always show a prayer slide: use live data if available, else fallback
+    items.push({
+      id: 'prayer-slide',
+      type: MediaType.PRAYER_TABLE,
+      url: 'custom://prayer-table',
+      duration: 15000, // Show for 15 seconds
+      source: prayerData ? 'CICSW Live' : 'Calgary Template',
+      data: prayerData || CALGARY_PRAYER_SCHEDULE
+    });
 
     // Add rest of the gallery
     items.push(...GALLERY_IMAGES);
