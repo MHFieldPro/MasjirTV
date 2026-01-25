@@ -1,0 +1,8 @@
+{
+  "name": "SignageView Pro",
+  "description": "A high-fidelity digital signage application designed for TV displays, featuring a continuous loop of media slides and a real-time scrolling news ticker.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
