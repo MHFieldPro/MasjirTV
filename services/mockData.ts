@@ -34,7 +34,7 @@ export const GALLERY_IMAGES: SlideItem[] = [
   {
     id: 'g2',
     type: MediaType.IMAGE,
-    url: 'https://d1dncmkdpaif79.cloudfront.net/public/dev.hamitay@gmail.com/image/abuu%20huraira%20parking.png',
+    url: 'https://d1dncmkdpaif79.cloudfront.net/public/dev.hamitay@gmail.com/image/abuu%20huraira%20parking1.png',
     duration: 8000,
     title: 'Collaborative Spaces',
     description: 'Enhancing productivity through design.',
