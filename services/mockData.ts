@@ -53,6 +53,7 @@ export const GALLERY_IMAGES: SlideItem[] = [
 
 export const MOCK_NEWS: NewsItem[] = [
   { id: 'n1', text: 'Important: Annual community meeting moved to Hall B at 7 PM tonight.', category: 'COMMUNITY' },
+   { id: 'n1', text: 'Important: Please make sure to follow the parking rules and park only in designated parking areas.', category: 'Important' },
   { id: 'n2', text: 'New educational classes starting this Monday for all ages. Register online.', category: 'CLASSES' },
   { id: 'n3', text: 'Prayer times adjusted for the coming week. Please check the latest schedule.', category: 'PRAYER' },
   { id: 'n4', text: 'Ramadan 2025 preparations are underway. Volunteer opportunities available.', category: 'RAMADAN' },
