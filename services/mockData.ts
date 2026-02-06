@@ -34,7 +34,7 @@ export const GALLERY_IMAGES: SlideItem[] = [
   {
     id: 'g2',
     type: MediaType.IMAGE,
-    url: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1920&h=1080',
+    url: 'https://d1dncmkdpaif79.cloudfront.net/public/dev.hamitay@gmail.com/image/abuu%20huraira%20parking1.png',
     duration: 8000,
     title: 'Collaborative Spaces',
     description: 'Enhancing productivity through design.',
@@ -53,8 +53,9 @@ export const GALLERY_IMAGES: SlideItem[] = [
 
 export const MOCK_NEWS: NewsItem[] = [
   { id: 'n1', text: 'Important: Annual community meeting moved to Hall B at 7 PM tonight.', category: 'COMMUNITY' },
-  { id: 'n2', text: 'New educational classes starting this Monday for all ages. Register online.', category: 'CLASSES' },
-  { id: 'n3', text: 'Prayer times adjusted for the coming week. Please check the latest schedule.', category: 'PRAYER' },
-  { id: 'n4', text: 'Ramadan 2025 preparations are underway. Volunteer opportunities available.', category: 'RAMADAN' },
-  { id: 'n5', text: 'Weekly maintenance scheduled for Sunday at 12:00 AM. Systems may be offline.', category: 'DEFAULT' },
+   { id: 'n2', text: 'Important: Please make sure to follow the parking rules and park only in designated parking areas.', category: 'Important' },
+  { id: 'n3', text: 'New educational classes starting this Monday for all ages. Register online.', category: 'CLASSES' },
+  { id: 'n4', text: 'Prayer times adjusted for the coming week. Please check the latest schedule.', category: 'PRAYER' },
+  { id: 'n5', text: 'Ramadan 2025 preparations are underway. Volunteer opportunities available.', category: 'RAMADAN' },
+  { id: 'n6', text: 'Weekly maintenance scheduled for Sunday at 12:00 AM. Systems may be offline.', category: 'DEFAULT' },
 ];
