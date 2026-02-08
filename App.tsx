@@ -2,18 +2,21 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import SlideCarousel from './components/SlideCarousel';
 import NewsTicker from './components/NewsTicker';
-import { GALLERY_IMAGES, MOCK_NEWS, CALGARY_PRAYER_SCHEDULE } from './services/mockData';
+import { GALLERY_IMAGES, MOCK_NEWS, CALGARY_PRAYER_SCHEDULE, RAMADAN_IFTAR_BOOKINGS } from './services/mockData';
 import { fetchCICSWPrayerData, formatPrayerTicker } from './services/prayerService';
 import { NewsItem, PrayerSchedule, MediaType, SlideItem } from './types';
 import WelcomeSlide from './components/WelcomeSlide';
 import BookingSlide from './components/BookingSlide';
 import AnnouncementSlide from './components/AnnouncementSlide';
+import VideoSlide from './components/VideoSlide';
+import RamadanIftarSlide from './components/RamadanIftarSlide';
 
 const App: React.FC = () => {
   const [newsItems, setNewsItems] = useState<NewsItem[]>(MOCK_NEWS);
   const [prayerData, setPrayerData] = useState<PrayerSchedule | null>(null);
   const [newsBarVisible, setNewsBarVisible] = useState(true);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isSilenceMode, setIsSilenceMode] = useState(false);
 
   // Combine dynamic prayer slide with gallery images
   const allMediaItems = useMemo(() => {
@@ -23,7 +26,7 @@ const App: React.FC = () => {
       id: 'prayer-slide',
       type: MediaType.PRAYER_TABLE,
       url: 'custom://prayer-table',
-      duration: 15000, // Show for 15 seconds
+      duration: 15000, // Show for 5 seconds
       source: prayerData ? 'CICSW Live' : 'Calgary Template',
       data: prayerData || CALGARY_PRAYER_SCHEDULE
     });
@@ -31,25 +34,42 @@ const App: React.FC = () => {
     items.push({
       id: 'welcome-slide',
       type: MediaType.CUSTOM_PAGE,
-      duration: 10000,
+      duration: 1000,
       source: 'Local',
       component: WelcomeSlide
     });
+    // Add video slide
     items.push({
-      id: 'booking-slide',
+      id: 'video-slide',
       type: MediaType.CUSTOM_PAGE,
-      duration: 10000,
-      source: 'Local',
-      component: BookingSlide,
-      hideNewsBar: true
+      duration: 3000, // 30 seconds
+      source: 'YouTube',
+      component: () => <VideoSlide videoUrl="https://www.youtube.com/watch?v=vuBu6QhMPAI" />,
+      hideNewsBar: false
     });
+    // Add Ramadan Iftar booking slide
     items.push({
-      id: 'announcement-slide',
+      id: 'ramadan-iftar-slide',
       type: MediaType.CUSTOM_PAGE,
-      duration: 10000,
+      duration: 20000, // 20 seconds
       source: 'Local',
-      component: AnnouncementSlide
+      component: () => <RamadanIftarSlide bookings={RAMADAN_IFTAR_BOOKINGS} year={2026} />
     });
+    // items.push({
+    //   id: 'booking-slide',
+    //   type: MediaType.CUSTOM_PAGE,
+    //   duration: 10000,
+    //   source: 'Local',
+    //   component: BookingSlide,
+    //   hideNewsBar: true
+    // });
+    // items.push({
+    //   id: 'announcement-slide',
+    //   type: MediaType.CUSTOM_PAGE,
+    //   duration: 10000,
+    //   source: 'Local',
+    //   component: AnnouncementSlide
+    // });
     // Add rest of the gallery
     items.push(...GALLERY_IMAGES);
     return items;
@@ -58,8 +78,9 @@ const App: React.FC = () => {
   // Listen for slide changes and update news bar visibility
   useEffect(() => {
     const currentSlide = allMediaItems[currentSlideIndex];
-    setNewsBarVisible(currentSlide?.hideNewsBar ? false : true);
-  }, [currentSlideIndex, allMediaItems]);
+    // Hide news bar if in silence mode or if the slide has hideNewsBar set
+    setNewsBarVisible(isSilenceMode ? false : (currentSlide?.hideNewsBar ? false : true));
+  }, [currentSlideIndex, allMediaItems, isSilenceMode]);
 
   useEffect(() => {
     const updatePrayerTimes = async () => {
@@ -116,6 +137,7 @@ const App: React.FC = () => {
         <SlideCarousel
           items={allMediaItems}
           onSlideChange={setCurrentSlideIndex}
+          onSilenceChange={setIsSilenceMode}
         />
       </div>
 

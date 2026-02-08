@@ -42,5 +42,6 @@ export async function fetchCICSWPrayerData(): Promise<PrayerSchedule | null> {
 
 // Helper to format the schedule for the ticker
 export function formatPrayerTicker(schedule: PrayerSchedule): string {
-  return `Fajr: ${schedule.fajr} • Sunrise: ${schedule.sunrise} • Dhuhr: ${schedule.dhuhr} • Asr: ${schedule.asr} • Maghrib: ${schedule.maghrib} • Isha: ${schedule.isha}`;
+  const getTime = (prayer: any) => typeof prayer === 'string' ? prayer : prayer.adhan;
+  return `Fajr: ${getTime(schedule.fajr)} • Sunrise: ${getTime(schedule.sunrise)} • Dhuhr: ${getTime(schedule.dhuhr)} • Asr: ${getTime(schedule.asr)} • Maghrib: ${getTime(schedule.maghrib)} • Isha: ${getTime(schedule.isha)}`;
 }

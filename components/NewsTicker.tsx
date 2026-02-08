@@ -38,6 +38,12 @@ const CATEGORY_CONFIG: Record<string, { label: string; color: string; bg: string
     bg: 'bg-rose-800', 
     border: 'border-rose-500/30' 
   },
+  'MASJID': { 
+    label: 'MASJID', 
+    color: 'text-teal-400', 
+    bg: 'bg-teal-800', 
+    border: 'border-teal-500/30' 
+  },
   'DEFAULT': { 
     label: 'NOTICES', 
     color: 'text-slate-400', 
@@ -96,7 +102,7 @@ const NewsTicker: React.FC<NewsTickerProps> = ({ news, scrollSpeed = 20 }) => {
         <div 
           key={activeCategory} // Force re-animation on category change
           className="animate-marquee whitespace-nowrap flex items-center" 
-          style={{ animationDuration: `${scrollSpeed}s` }}
+          style={{ animationDuration: '60s' }}
         >
           {/* First set of items */}
           {activeItems.map((item) => (

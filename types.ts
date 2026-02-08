@@ -6,13 +6,18 @@ export enum MediaType {
   CUSTOM_PAGE = 'custom_page',
 }
 
+export interface PrayerTime {
+  adhan: string;
+  iqama?: string;
+}
+
 export interface PrayerSchedule {
-  fajr: string;
-  sunrise: string;
-  dhuhr: string;
-  asr: string;
-  maghrib: string;
-  isha: string;
+  fajr: string | PrayerTime;
+  sunrise: string | PrayerTime;
+  dhuhr: string | PrayerTime;
+  asr: string | PrayerTime;
+  maghrib: string | PrayerTime;
+  isha: string | PrayerTime;
   date?: string;
 }
 
