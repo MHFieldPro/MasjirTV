@@ -76,7 +76,7 @@ export const MOCK_NEWS: NewsItem[] = [
   { id: 'n10', text: 'Every contribution counts! Your monthly support helps keep the masjid doors open for the community. May Allah reward you abundantly.', category: 'MASJID' },
 ];
 
-// Ramadan Iftar Bookings
+// Ramadan Iftar Bookings .. In a real app, this would come from an API/database
 export const RAMADAN_IFTAR_BOOKINGS = [
   { day: 1, sponsors: ['Ahmed Family', 'Fatima Khan'] },
   { day: 2, sponsors: ['Omar Brothers'] },
